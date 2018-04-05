@@ -1,0 +1,17 @@
+PCI Scanner -
+    Useful for both USB and Gfx (and ethernet)
+
+Virtual Memory?
+    Load virtual memory
+    Physical page allocator
+    Maybe memory allocator (steal?)
+
+USB
+    Initialize
+    Talk to it
+
+Graphics
+    Etc
+
+Internet
+    Words go here
