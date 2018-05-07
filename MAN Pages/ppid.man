@@ -1,0 +1,15 @@
+Name
+    ppid - get the PID of the current process’ parent
+
+Synopsis
+    #include “common.h”
+     uint16_t ppid(void);
+
+Description
+    The function gets the PID of the current process’ parent
+
+Return Value
+    The PPID of the current process
+Errors
+    None
+

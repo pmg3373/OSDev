@@ -1,0 +1,16 @@
+Name
+    read - read from a channel (serial or console)
+
+Synopsis
+    #include “common.h”
+    int read(int channel, char *buffer, uint32_t length);
+
+Description
+    The function attempts to read up to length bytes from the given channel into buffer.
+    The process may block if attempting to read from the console.
+
+Return Value
+    This function returns the number of bytes read
+Errors
+    E_BAD_CHAN - invalid channel
+

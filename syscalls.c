@@ -821,7 +821,8 @@ static void _sys_get_window(void) {
 static void _sys_del_window(void) {
   int id = (int)ARG(_current,1);
 
-  _kill_window(id);
+  int ret = _kill_window(id);
+  RET(_current) = ret;
 }
 
 /*

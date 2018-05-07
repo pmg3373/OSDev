@@ -91,7 +91,7 @@ void _paint_window(window_t *w) {
   w->cursor_x = cx; w->cursor_y = cy;
 }
 
-void _kill_window(uint8_t window_id) {
+int _kill_window(uint8_t window_id) {
   int index = -1;
   // find window to kill
   for(int i = 0; i < w_count; ++i) {
@@ -100,6 +100,7 @@ void _kill_window(uint8_t window_id) {
       break;
     }
   }
+  if(index == -1) return index;
   window_t *temp = wbuff[index];
   _kfree(temp);
   // fill in its spot
@@ -107,6 +108,7 @@ void _kill_window(uint8_t window_id) {
     wbuff[i] = wbuff[i+1];
   }
   --w_count;
+  return 0;
 }
 
 int _add_window(uint32_t x,

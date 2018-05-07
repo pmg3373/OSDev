@@ -1,0 +1,16 @@
+Name
+    exit - process exit
+
+Synopsis
+    #include “common.h”
+    void exit(int32_t status);
+
+Description
+    The function terminates the calling process.
+
+Return Value
+    This function does not return
+
+Errors
+    This function throws no errors
+

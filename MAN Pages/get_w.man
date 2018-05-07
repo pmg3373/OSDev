@@ -1,0 +1,16 @@
+Name
+    get_w - creates a window and gives the id to caller
+
+Synopsis
+    #include “common.h”
+     int get_w(char *buff, char *title, uint32_t x, uint32_t y, uint32_t h, uint32_t w);
+
+Description
+    The function creates a window of the specified height and width, at the specified location.
+    Title is displayed at the top of the window, and the buffer fills the window.
+
+Return Value
+    The id of the window or an error
+Errors
+    -1 if we have hit the window limit
+

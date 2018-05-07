@@ -1,0 +1,20 @@
+Name
+    fork - creates a new process
+
+Synopsis
+    #include “common.h”
+    int fork(void);
+
+Description
+    The function creates a new process by duplicating the calling process. The new process 
+is the child, the calling process is the parent.
+
+Return Value
+    This function returns the PID of the child process or an error code if it is the parent.
+    This function returns 0 if it is the child.
+Errors
+    E_TOO_MANY_PROCS - we hit the max number of processes
+    E_NO_MORE_PROCS - we have run out of PIDs
+    E_NO_PCBS - we could not allocate pcb
+    E_NO_STACKS - we could not allocate stack
+

@@ -543,7 +543,7 @@ cm_ret:
 vesa_set_mode:
 	// save everything
 	// pushaw
-	pushw	%f
+	pushw	%fs
 	pushw	%es
 	pushw	%ax
 	pushw	%bx

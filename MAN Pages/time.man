@@ -1,0 +1,15 @@
+Name
+    time - retrieves the system time
+
+Synopsis
+    #include “common.h”
+     uint32_t ppid(void);
+
+Description
+    The function gets the current system time in milliseconds
+
+Return Value
+    The current system time
+Errors
+    None
+

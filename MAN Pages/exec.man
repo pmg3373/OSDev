@@ -1,0 +1,16 @@
+Name
+    exec - replace program
+
+Synopsis
+    #include “common.h”
+int exec(int (*entry)(char*argv[], int argc), char *argv);
+
+Description
+    The function replaces the current program with the process defined by the function 
+pointer.
+
+Return Value
+    This function does not return on success.
+Errors
+    None
+

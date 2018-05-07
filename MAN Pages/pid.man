@@ -1,0 +1,15 @@
+Name
+    pid - get the PID of the current process
+
+Synopsis
+    #include “common.h”
+     uint16_t pid(void);
+
+Description
+    The function gets the PID of the current process
+
+Return Value
+    The PID of the current process
+Errors
+    None
+

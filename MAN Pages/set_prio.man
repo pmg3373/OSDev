@@ -1,0 +1,16 @@
+Name
+    set_prio - set the priority of the specified process
+
+Synopsis
+    #include “common.h”
+     int set_prio(uint16_t whom, uint_8 prio);
+
+Description
+    The function sets the priority of the specified process if it is valid and the priority is valid.
+
+Return Value
+    The old priority of the specified process or error
+Errors
+    E_BAD_PID - given PID is not valid
+    E_BAD_PRIO - given priority is invalid
+

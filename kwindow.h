@@ -5,7 +5,7 @@
 **
 ** Author:	CSCI-452 class of 20175
 **
-** Contributor:
+** Contributor: Jonathan Schenk
 **
 ** Description:	Windowing system
 */
@@ -108,7 +108,7 @@ int _add_window(uint32_t x,
 **
 ** Argument: id of window to kill
 */
-void _kill_window(uint8_t window_id);
+int _kill_window(uint8_t window_id);
 
 /*
 ** Pulls window with given id to spot 0 in window buffer

@@ -1,0 +1,15 @@
+Name
+    del_w - deletes window with the specified id
+
+Synopsis
+    #include “common.h”
+     int del_w(void);
+
+Description
+    The function deletes the window with the given id - if it exists
+
+Return Value
+    0 on success, -1 on failure
+Errors
+    -1 if the window doesn’t exist, 0 otherwise
+
