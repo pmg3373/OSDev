@@ -5,7 +5,7 @@
 **
 ** Author:	CSCI-452 class of 20175
 **
-** Contributor:
+** Contributor: Jonathan Schenk
 **
 ** Description: Display Driver for 1024x768 16 bit color graphics
 */

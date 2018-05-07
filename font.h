@@ -5,9 +5,9 @@
 **
 ** Author:	CSCI-452 class of 20175
 **
-** Contributor:
+** Contributor: Jonathan Schenk
 **
-** Description:	?
+** Description:	Text support for graphics mode
 */
 
 #ifndef _font_H_

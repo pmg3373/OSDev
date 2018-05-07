@@ -7,7 +7,7 @@
 **		copyleft 1999 Jon Coles
 **
 ** Contributor:	Warren R. Carithers, K. Reek, Garrett C. Smith,
-**		Walter Litwinczyk, David C. Larsen, Sean T. Congden
+**		Walter Litwinczyk, David C. Larsen, Sean T. Congden Jonathan Schenk
 **
 ** Description:	Bootstrap routine.
 **
@@ -543,7 +543,7 @@ cm_ret:
 vesa_set_mode:
 	// save everything
 	// pushaw
-	pushw	%fs
+	pushw	%f
 	pushw	%es
 	pushw	%ax
 	pushw	%bx

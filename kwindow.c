@@ -1,13 +1,13 @@
 /*
 ** SCCS ID:	%W%	%G%
 **
-** File:	?
+** File:	kwindow.c
 **
 ** Author:	CSCI-452 class of 20175
 **
-** Contributor:
+** Contributor: Jonathan Schenk
 **
-** Description:	?
+** Description:	Code for creating, deleting, changing order for windows
 */
 
 #define	__SP_KERNEL__
