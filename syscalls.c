@@ -26,6 +26,7 @@
 #include "stacks.h"
 #include "clock.h"
 #include "sio.h"
+#include "kwindow.h"
 
 /*
 ** PRIVATE DEFINITIONS
@@ -791,6 +792,39 @@ static void _sys_wait( void ) {
 }
 
 /*
+** _sys_get_window - creates a window and returns it id
+**
+** implements:  int get_w( char *buff, char *title, uint32 x, uint32 y, uint32 h, uint32 w );
+**
+** returns:
+**      on error, -1
+**      on success, the window id
+*/
+static void _sys_get_window(void) {
+  char *buff = (char *)ARG(_current,1);
+  char *title = (char *)ARG(_current,2);
+  uint32_t x = (uint32_t)ARG(_current, 3);
+  uint32_t y =(uint32_t) ARG(_current, 4);
+  uint32_t h =(uint32_t) ARG(_current, 5);
+  uint32_t w =(uint32_t) ARG(_current, 6);
+
+  int id = _add_window(x, y, h, w, 0xFFFF, 0x0000, buff, title);
+
+  RET(_current) = id;
+}
+
+/*
+** _sys_del_window - deletes a window with the given id
+**
+** implements:  int del_w( int wid );
+*/
+static void _sys_del_window(void) {
+  int id = (int)ARG(_current,1);
+
+  _kill_window(id);
+}
+
+/*
 ** _sys_dumpme - dump all information about a user process
 **
 ** implements:  void dumpme( int fatal );
@@ -850,6 +884,8 @@ void _sys_init( void ) {
    _syscalls[ SYS_get_prio ] = _sys_get_prio;
    _syscalls[ SYS_set_prio ] = _sys_set_prio;
    _syscalls[ SYS_dumpme ]   = _sys_dumpme;
+   _syscalls[ SYS_get_w ]    = _sys_get_window;
+   _syscalls[ SYS_del_w ]    = _sys_del_window;
 
    /*
    ** initialize the list of all process queues

@@ -37,9 +37,11 @@
 #define	SYS_get_prio	11
 #define	SYS_set_prio	12
 #define	SYS_dumpme	13
+#define	SYS_get_w	14
+#define	SYS_del_w	15
 
 // UPDATE THIS DEFINITION IF MORE SYSCALLS ARE ADDED!
-#define	N_SYSCALLS	14
+#define	N_SYSCALLS	16
 
 // dummy system call code to test our ISR
 

@@ -11,10 +11,10 @@
 # User supplied files
 #
 SYS_C_SRC = clock.c klibc.c kmalloc.c pcbs.c queues.c scheduler.c \
-	sio.c stacks.c syscalls.c system.c pci.c
+	sio.c stacks.c syscalls.c system.c pci.c display.c font.c kwindow.c
 
 SYS_C_OBJ = clock.o klibc.o kmalloc.o pcbs.o queues.o scheduler.o \
-	sio.o stacks.o syscalls.o system.o pci.o
+	sio.o stacks.o syscalls.o system.o pci.o display.o font.o kwindow.o
 
 SYS_S_SRC = klibs.S
 
@@ -187,7 +187,7 @@ floppy:	floppy.image
 	dd if=floppy.image of=/dev/fd0
 
 usb:	usb.image
-	/usr/local/dcs/bin/dcopy usb.image
+	/home/jds/Desktop/dcopy usb.image
 
 qemu:   usb.image
 	qemu-system-i386 -hdb usb.image -serial stdio -device nec-usb-xhci
@@ -263,7 +263,7 @@ syscalls.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h
 syscalls.o: bootstrap.h pcbs.h stacks.h queues.h klib.h ./uart.h startup.h
 syscalls.o: syscalls.h scheduler.h clock.h sio.h
 system.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
-system.o: pcbs.h stacks.h queues.h klib.h clock.h syscalls.h sio.h
+system.o: pcbs.h stacks.h queues.h klib.h clock.h syscalls.h sio.h display.h
 system.o: scheduler.h pci.h users.h
 ulibc.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
 ulibc.o: pcbs.h stacks.h queues.h klib.h
@@ -271,3 +271,5 @@ users.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
 users.o: pcbs.h stacks.h queues.h klib.h users.h
 ulibs.o: syscalls.h common.h c_io.h kmalloc.h support.h system.h x86arch.h
 ulibs.o: bootstrap.h pcbs.h stacks.h queues.h klib.h
+display.o: common.h display.h font.h
+font.o: common.h font.h

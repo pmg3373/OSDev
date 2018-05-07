@@ -931,6 +931,21 @@ int idle( int argc, char *argv[] ) {
 
 }
 
+/*
+** Creates three windows, deletes the first
+*/
+int window_test(int argc, char *argv[]) {
+  int j;
+  int w1, w2, w3;
+  char *buff = " fun!";
+  w1 = get_w("fun!", "test1", 0, 0, 500, 600);
+  w2 = get_w("wraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaap", "test2", 32, 32, 500, 600);
+  w3 = get_w(buff, "test3", 64, 64, 300, 400);
+  buff[0] = '!';
+  del_w(w1);
+  for(;;) {
+  }
+}
 
 /*
 ** Initial process; it starts the other top-level user processes.
@@ -968,6 +983,20 @@ int init( int argc, char *argv[] ) {
    whom = spawn( idle, args, PRIO_LOWEST );
    if( whom < 0 ) {
       cwrites( "init, spawn() IDLE failed\n" );
+   }
+   swritech( '+' );
+
+   /*args[0] = "screen refresh"; args[1] = "@";
+   whom = spawn( _screen_refresh, args, PRIO_SYS_STD );
+   if( whom < 0 ) {
+     cwrites( "init, spawn() SCREEN_REFRESH failed\n" );
+   }
+   swritech( '+' );
+   */
+   args[0] = "window test"; args[1] = "#";
+   whom = spawn( window_test, args, PRIO_USER_STD );
+   if( whom < 0 ) {
+     cwrites( "init, spawn() WINDOW_TEST failed\n" );
    }
    swritech( '+' );
 

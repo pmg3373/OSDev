@@ -23,6 +23,7 @@
 #include "scheduler.h"
 #include "sio.h"
 #include "syscalls.h"
+#include "display.h"
 
 /*
 ** PRIVATE DEFINITIONS
@@ -98,6 +99,10 @@ static void _clk_isr( int vector, int ecode ) {
       _active_dump( "Process table", FALSE );
    }
 #endif
+
+   if(_system_time % 50 == 0) {
+     _screen_refresh();
+   }
 
    // increment the system time
 

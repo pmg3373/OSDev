@@ -211,6 +211,23 @@ int read( int channel, char *buffer, uint32_t length );
 int write( int channel, const char *buf, uint32_t length );
 
 /*
+** get_w - creates a window and returns its id
+**
+** usage:	w = get_w(buff,title,x,y,h,w)
+**
+** returns:
+**	The id of the new window or -1 if we are at the window limit
+*/
+int get_w( char *buff, char *title, uint32_t x, uint32_t y, uint32_t h, uint32_t w );
+
+/*
+** del_w - deletes window with given id
+**
+** usage:	w = del_w(id)
+*/
+int del_w( int id );
+
+/*
 ** fork - create a new process
 **
 ** usage:	pid = fork();
