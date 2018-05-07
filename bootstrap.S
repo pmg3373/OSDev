@@ -445,7 +445,7 @@ check_memory:
 	pushw	%dx
 	pushw	%si
 	pushw	%di
-	
+
 	// Set the start of the buffer
 	movw	$MMAP_SEGMENT, %bx // 0x2D0
 	mov	%bx, %ds           // Data segment now starts at 0x2D00
@@ -535,6 +535,60 @@ cm_ret:
 	ret
 
 /*
+** Uses BIOS interrupts to set VESA mode
+**
+** Mode set to 1024x768 16 bit color
+** Mode info place at 0x3000
+*/
+vesa_set_mode:
+	// save everything
+	// pushaw
+	pushw	%fs
+	pushw	%es
+	pushw	%ax
+	pushw	%bx
+	pushw	%cx
+	pushw	%dx
+	pushw	%si
+	pushw	%di
+
+  // Get mode info
+	mov $0x4F01, %ax
+	mov $0x4117, %cx
+	mov $RMTEXT_SEGMENT, %bx
+	mov %bx, %es
+	mov $512, %di
+	int $0x10
+
+  cmp $0x4F, %ax
+	jne vesa_failed
+
+  // Set mode
+	mov $0x4F02, %ax
+	mov $0x4117, %bx
+	or $0x4000, %bx
+	mov $0, %di
+	int $0x10
+
+	cmp $0x4F, %ax
+	jne vesa_failed
+	jmp vesa_cleanup
+
+vesa_cleanup:
+	popw	%di
+	popw	%si
+	popw	%dx
+	popw	%cx
+	popw	%bx
+	popw	%ax
+	popw	%es
+	popw	%fs
+	ret
+vesa_failed:
+	movl	$-1, %ds:0x0	// indicate failure
+	stc
+
+/*
 ** Startup code.
 **
 ** This code configures the GDT, enters protected mode, and then
@@ -549,6 +603,8 @@ switch:
 	call	floppy_off
 	call	enable_A20
 	call	move_gdt
+  // Set VESA video mode
+  call  vesa_set_mode
 	// call	check_mem
 	call	check_memory
 
