@@ -63,7 +63,8 @@ USR_OBJS = $(USR_C_OBJ) $(USR_S_OBJ)
 #		_sys_fork after allocs, strtbl contents
 #	3 adds:	fork() return value in parent, child priority set
 #
-MAIN_OPTIONS = -DSP_OS_CONFIG -DCLEAR_BSS_SEGMENT -DDUMP_QUEUES
+MAIN_OPTIONS = -DSP_OS_CONFIG -DCLEAR_BSS_SEGMENT
+#MAIN_OPTIONS = -DSP_OS_CONFIG -DCLEAR_BSS_SEGMENT# -DDUMP_QUEUES
 DBG_OPTIONS = -DSANITY_CHECK -DISR_DEBUGGING_CODE -DDEBUG_UNEXP_INTS
 USER_OPTIONS = $(MAIN_OPTIONS) $(DBG_OPTIONS)
 
@@ -187,10 +188,10 @@ floppy:	floppy.image
 	dd if=floppy.image of=/dev/fd0
 
 usb:	usb.image
-	/usr/local/dcs/bin/dcopy usb.image
+	/home/douglas/osdev/dcopy/dcopy usb.image
 
 qemu:   usb.image
-	qemu-system-i386 -hdb usb.image -serial stdio -device nec-usb-xhci
+	qemu-system-i386 -hdb usb.image -serial stdio -device nec-usb-xhci -device usb-mouse -device usb-kbd
 
 #
 # Special rule for creating the modification and offset programs
