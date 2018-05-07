@@ -11,10 +11,12 @@
 # User supplied files
 #
 SYS_C_SRC = clock.c klibc.c kmalloc.c pcbs.c queues.c scheduler.c \
-	sio.c stacks.c syscalls.c system.c pci.c display.c font.c kwindow.c
+	sio.c stacks.c syscalls.c system.c pci.c display.c font.c kwindow.c \
+	usb.c
 
 SYS_C_OBJ = clock.o klibc.o kmalloc.o pcbs.o queues.o scheduler.o \
-	sio.o stacks.o syscalls.o system.o pci.o display.o font.o kwindow.o
+	sio.o stacks.o syscalls.o system.o pci.o display.o font.o kwindow.o \
+	usb.o
 
 SYS_S_SRC = klibs.S
 
@@ -263,8 +265,12 @@ syscalls.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h
 syscalls.o: bootstrap.h pcbs.h stacks.h queues.h klib.h ./uart.h startup.h
 syscalls.o: syscalls.h scheduler.h clock.h sio.h
 system.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
-system.o: pcbs.h stacks.h queues.h klib.h clock.h syscalls.h sio.h display.h
-system.o: scheduler.h pci.h users.h
+system.o: pcbs.h stacks.h queues.h klib.h clock.h syscalls.h sio.h
+system.o: scheduler.h pci.h usb.h users.h display.h kwindow.h
+pci.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
+pci.o: pcbs.h stacks.h queues.h klib.h pci.h usb.h
+usb.o: usb.h pci.h common.h c_io.h kmalloc.h support.h system.h x86arch.h
+usb.o: bootstrap.h pcbs.h stacks.h queues.h klib.h
 ulibc.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
 ulibc.o: pcbs.h stacks.h queues.h klib.h
 users.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
