@@ -24,8 +24,11 @@
 #include "syscalls.h"
 #include "sio.h"
 #include "scheduler.h"
+#include "display.h"
+#include "kwindow.h"
 
 #include "pci.h"
+#include "i8255x.h"
 
 // need init() address
 #include "users.h"
@@ -219,13 +222,15 @@ void _init( void ) {
 
    _q_init();        // queues (must be second)
 
+   _display_init();
+   _window_init();
    _clk_init();      // clock
    _pcb_init();      // processes
    _sched_init();    // scheduler
    _sio_init();      // serial i/o
 
     _pci_init();
-
+	
    _stk_init();      // stacks
 
    _sys_init();      // syscalls (must be last, for _all_queues setup)

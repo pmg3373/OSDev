@@ -931,6 +931,56 @@ int idle( int argc, char *argv[] ) {
 
 }
 
+#include "kwindow.h"
+/*
+** Creates three windows, deletes the first
+*/
+int window_test(int argc, char *argv[]) {
+  int j;
+  int w1, w2, w3;
+  char *buff = " fun!";
+  w1 = get_w("fun!", "test1", 0, 0, 500, 600);
+  w2 = get_w("wraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaap", "test2", 32, 32, 500, 600);
+  w3 = get_w(buff, "test3", 64, 64, 300, 400);
+  buff[0] = '!';
+  //del_w(w1);
+  for(;;) {
+    int c = creadch();
+    uint32_t x; uint32_t y;
+    if(c == 'w') {
+      x = _get_mouse_x();
+      y = _get_mouse_y();
+      y-=5;
+      _update_mouse(x, y);
+    }
+    if(c == 'a') {
+      x = _get_mouse_x();
+      x-=5;
+      y = _get_mouse_y();
+      _update_mouse(--x, y);
+    }
+    if(c == 's') {
+      x = _get_mouse_x();
+      y = _get_mouse_y();
+      y+=5;
+      _update_mouse(x, ++y);
+    }
+    if(c == 'd') {
+      x = _get_mouse_x();
+      x+=5;
+      y = _get_mouse_y();
+      _update_mouse(++x, y);
+    }
+    if(c == 'l') {
+      uint8_t wind = _click_event();
+      _pull_forward(wind);
+    }
+    if(c == 'k') {
+      uint8_t wind = _click_event();
+      del_w(wind);
+    }
+  }
+}
 
 /*
 ** Initial process; it starts the other top-level user processes.
@@ -968,6 +1018,13 @@ int init( int argc, char *argv[] ) {
    whom = spawn( idle, args, PRIO_LOWEST );
    if( whom < 0 ) {
       cwrites( "init, spawn() IDLE failed\n" );
+   }
+   swritech( '+' );
+
+   args[0] = "window test"; args[1] = "#";
+   whom = spawn( window_test, args, PRIO_USER_HIGH );
+   if( whom < 0 ) {
+     cwrites( "init, spawn() WINDOW_TEST failed\n" );
    }
    swritech( '+' );
 

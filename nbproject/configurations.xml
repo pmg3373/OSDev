@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <in>0.S</in>
+      <in>0.c</in>
+      <in>0_1.S</in>
+      <in>BuildImage.c</in>
+      <in>Offsets.c</in>
+      <in>bootstrap.S</in>
+      <in>bootstrap_1.S</in>
+      <in>c_io.c</in>
+      <in>clock.c</in>
+      <in>i8255xcommandblock.c</in>
+      <in>isr_stubs.S</in>
+      <in>isr_stubs_1.S</in>
+      <in>klibc.c</in>
+      <in>klibs.S</in>
+      <in>klibs_1.S</in>
+      <in>kmalloc.c</in>
+      <in>pcbs.c</in>
+      <in>pci.c</in>
+      <in>queues.c</in>
+      <in>scheduler.c</in>
+      <in>sio.c</in>
+      <in>stacks.c</in>
+      <in>startup.S</in>
+      <in>support.c</in>
+      <in>syscalls.c</in>
+      <in>system.c</in>
+      <in>ulibc.c</in>
+      <in>ulibs.S</in>
+      <in>usb.c</in>
+      <in>users.c</in>
+    </df>
+    <logicalFolder name="SCCS" displayName="SCCS" projectFiles="true">
+      <itemPath>SCCS/s.BuildImage.c</itemPath>
+      <itemPath>SCCS/s.Makefile</itemPath>
+      <itemPath>SCCS/s.Memory.txt</itemPath>
+      <itemPath>SCCS/s.README</itemPath>
+      <itemPath>SCCS/s.bootstrap.S</itemPath>
+      <itemPath>SCCS/s.bootstrap.h</itemPath>
+      <itemPath>SCCS/s.c_io.c</itemPath>
+      <itemPath>SCCS/s.c_io.h</itemPath>
+      <itemPath>SCCS/s.clock.c</itemPath>
+      <itemPath>SCCS/s.clock.h</itemPath>
+      <itemPath>SCCS/s.common.h</itemPath>
+      <itemPath>SCCS/s.isr_stubs.S</itemPath>
+      <itemPath>SCCS/s.klib.h</itemPath>
+      <itemPath>SCCS/s.klibc.c</itemPath>
+      <itemPath>SCCS/s.klibs.S</itemPath>
+      <itemPath>SCCS/s.kmalloc.c</itemPath>
+      <itemPath>SCCS/s.kmalloc.h</itemPath>
+      <itemPath>SCCS/s.main.c</itemPath>
+      <itemPath>SCCS/s.pcbs.c</itemPath>
+      <itemPath>SCCS/s.pcbs.h</itemPath>
+      <itemPath>SCCS/s.queues.c</itemPath>
+      <itemPath>SCCS/s.queues.h</itemPath>
+      <itemPath>SCCS/s.scheduler.c</itemPath>
+      <itemPath>SCCS/s.scheduler.h</itemPath>
+      <itemPath>SCCS/s.sio.c</itemPath>
+      <itemPath>SCCS/s.sio.h</itemPath>
+      <itemPath>SCCS/s.stacks.c</itemPath>
+      <itemPath>SCCS/s.stacks.h</itemPath>
+      <itemPath>SCCS/s.startup.S</itemPath>
+      <itemPath>SCCS/s.startup.h</itemPath>
+      <itemPath>SCCS/s.support.c</itemPath>
+      <itemPath>SCCS/s.support.h</itemPath>
+      <itemPath>SCCS/s.syscalls.c</itemPath>
+      <itemPath>SCCS/s.syscalls.h</itemPath>
+      <itemPath>SCCS/s.system.c</itemPath>
+      <itemPath>SCCS/s.system.h</itemPath>
+      <itemPath>SCCS/s.uart.h</itemPath>
+      <itemPath>SCCS/s.ulib.h</itemPath>
+      <itemPath>SCCS/s.ulibc.c</itemPath>
+      <itemPath>SCCS/s.ulibs.S</itemPath>
+      <itemPath>SCCS/s.users.c</itemPath>
+      <itemPath>SCCS/s.users.h</itemPath>
+      <itemPath>SCCS/s.x86arch.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+      <itemPath>nbproject/private/launcher.properties</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>Cygwin|Cygwin</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+        <buildAnalyzer>false</buildAnalyzer>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="0.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="0.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="0_1.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="BuildImage.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Offsets.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.BuildImage.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.Memory.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.README" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.bootstrap.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="SCCS/s.bootstrap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.c_io.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.c_io.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.clock.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.clock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.isr_stubs.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="SCCS/s.klib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.klibc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.klibs.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="SCCS/s.kmalloc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.kmalloc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.pcbs.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.pcbs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.queues.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.queues.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.scheduler.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.scheduler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.sio.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.sio.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.stacks.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.stacks.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.startup.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="SCCS/s.startup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.support.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.support.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.syscalls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.syscalls.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.system.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.system.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.uart.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.ulib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.ulibc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.ulibs.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="SCCS/s.users.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SCCS/s.users.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SCCS/s.x86arch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bootstrap.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="bootstrap_1.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="c_io.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="clock.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="i8255xcommandblock.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="isr_stubs.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="isr_stubs_1.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="klibc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="klibs.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="klibs_1.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="kmalloc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="pcbs.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="pci.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="queues.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="scheduler.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="sio.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="stacks.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="startup.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="support.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="syscalls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="system.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ulibc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ulibs.S" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="usb.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="users.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

@@ -11,10 +11,12 @@
 # User supplied files
 #
 SYS_C_SRC = clock.c klibc.c kmalloc.c pcbs.c queues.c scheduler.c \
-	sio.c stacks.c syscalls.c system.c
+	sio.c stacks.c syscalls.c system.c pci.c usb.c ipv6.c ethernet.c \
+	i8255xcommandblock.c i8255x.c 
 
 SYS_C_OBJ = clock.o klibc.o kmalloc.o pcbs.o queues.o scheduler.o \
-	sio.o stacks.o syscalls.o system.o
+	sio.o stacks.o syscalls.o system.o pci.o usb.o ipv6.o ethernet.o \
+	i8255xcommandblock.o i8255x.o 
 
 SYS_S_SRC = klibs.S
 
@@ -190,7 +192,7 @@ usb:	usb.image
 	/usr/local/dcs/bin/dcopy usb.image
 
 qemu:   usb.image
-	qemu-system-i386 -hdb usb.image -serial stdio
+	qemu-system-i386 -hdb usb.image -serial stdio -device nec-usb-xhci
 
 #
 # Special rule for creating the modification and offset programs
@@ -264,7 +266,24 @@ syscalls.o: bootstrap.h pcbs.h stacks.h queues.h klib.h ./uart.h startup.h
 syscalls.o: syscalls.h scheduler.h clock.h sio.h
 system.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
 system.o: pcbs.h stacks.h queues.h klib.h clock.h syscalls.h sio.h
-system.o: scheduler.h users.h
+system.o: scheduler.h pci.h usb.h i8255x.h i8255xcommandblock.h ethernet.h
+system.o: ipv6.h startup.h users.h
+pci.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
+pci.o: pcbs.h stacks.h queues.h klib.h pci.h usb.h i8255x.h
+pci.o: i8255xcommandblock.h ethernet.h ipv6.h startup.h
+usb.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
+usb.o: pcbs.h stacks.h queues.h klib.h usb.h pci.h i8255x.h
+usb.o: i8255xcommandblock.h ethernet.h ipv6.h startup.h
+ipv6.o: ipv6.h common.h c_io.h kmalloc.h support.h system.h x86arch.h
+ipv6.o: bootstrap.h pcbs.h stacks.h queues.h klib.h
+ethernet.o: ethernet.h ipv6.h common.h c_io.h kmalloc.h support.h system.h
+ethernet.o: x86arch.h bootstrap.h pcbs.h stacks.h queues.h klib.h
+i8255xcommandblock.o: i8255xcommandblock.h ethernet.h ipv6.h common.h c_io.h
+i8255xcommandblock.o: kmalloc.h support.h system.h x86arch.h bootstrap.h
+i8255xcommandblock.o: pcbs.h stacks.h queues.h klib.h
+i8255x.o: i8255x.h common.h c_io.h kmalloc.h support.h system.h x86arch.h
+i8255x.o: bootstrap.h pcbs.h stacks.h queues.h klib.h i8255xcommandblock.h
+i8255x.o: ethernet.h ipv6.h startup.h
 ulibc.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
 ulibc.o: pcbs.h stacks.h queues.h klib.h
 users.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h

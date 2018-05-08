@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <in>0.S</in>
+      <in>0.c</in>
+      <in>0.h</in>
+      <in>0_1.S</in>
+      <in>BuildImage.c</in>
+      <in>Offsets.c</in>
+      <in>bootstrap.S</in>
+      <in>bootstrap.h</in>
+      <in>bootstrap_1.S</in>
+      <in>c_io.c</in>
+      <in>c_io.h</in>
+      <in>clock.c</in>
+      <in>clock.h</in>
+      <in>common.h</in>
+      <in>ethernet.c</in>
+      <in>ethernet.h</in>
+      <in>i8255x.c</in>
+      <in>i8255x.h</in>
+      <in>i8255xcommandblock.c</in>
+      <in>i8255xcommandblock.h</in>
+      <in>ipv6.c</in>
+      <in>ipv6.h</in>
+      <in>isr_stubs.S</in>
+      <in>isr_stubs_1.S</in>
+      <in>klib.h</in>
+      <in>klibc.c</in>
+      <in>klibs.S</in>
+      <in>klibs_1.S</in>
+      <in>kmalloc.c</in>
+      <in>kmalloc.h</in>
+      <in>pcbs.c</in>
+      <in>pcbs.h</in>
+      <in>pci.c</in>
+      <in>pci.h</in>
+      <in>queues.c</in>
+      <in>queues.h</in>
+      <in>scheduler.c</in>
+      <in>scheduler.h</in>
+      <in>sio.c</in>
+      <in>sio.h</in>
+      <in>stacks.c</in>
+      <in>stacks.h</in>
+      <in>startup.S</in>
+      <in>startup.h</in>
+      <in>support.c</in>
+      <in>support.h</in>
+      <in>syscalls.c</in>
+      <in>syscalls.h</in>
+      <in>system.c</in>
+      <in>system.h</in>
+      <in>uart.h</in>
+      <in>ulib.h</in>
+      <in>ulibc.c</in>
+      <in>ulibs.S</in>
+      <in>usb.c</in>
+      <in>usb.h</in>
+      <in>users.c</in>
+      <in>users.h</in>
+      <in>x86arch.h</in>
+    </df>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>3</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir>.</rundir>
+        <buildfirst>false</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>

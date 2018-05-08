@@ -11,10 +11,14 @@
 # User supplied files
 #
 SYS_C_SRC = clock.c klibc.c kmalloc.c pcbs.c queues.c scheduler.c \
-	sio.c stacks.c syscalls.c system.c pci.c usb.c
+	sio.c stacks.c syscalls.c system.c pci.c display.c font.c kwindow.c \
+	usb.c \
+	ipv6.c ethernet.c i8255xcommandblock.c i8255x.c 
 
 SYS_C_OBJ = clock.o klibc.o kmalloc.o pcbs.o queues.o scheduler.o \
-	sio.o stacks.o syscalls.o system.o pci.o usb.o
+	sio.o stacks.o syscalls.o system.o pci.o display.o font.o kwindow.o \
+	usb.o \
+	ipv6.o ethernet.o i8255xcommandblock.o i8255x.o 
 
 SYS_S_SRC = klibs.S
 
@@ -63,7 +67,8 @@ USR_OBJS = $(USR_C_OBJ) $(USR_S_OBJ)
 #		_sys_fork after allocs, strtbl contents
 #	3 adds:	fork() return value in parent, child priority set
 #
-MAIN_OPTIONS = -DSP_OS_CONFIG -DCLEAR_BSS_SEGMENT -DDUMP_QUEUES
+MAIN_OPTIONS = -DSP_OS_CONFIG -DCLEAR_BSS_SEGMENT
+#MAIN_OPTIONS = -DSP_OS_CONFIG -DCLEAR_BSS_SEGMENT# -DDUMP_QUEUES
 DBG_OPTIONS = -DSANITY_CHECK -DISR_DEBUGGING_CODE -DDEBUG_UNEXP_INTS
 USER_OPTIONS = $(MAIN_OPTIONS) $(DBG_OPTIONS)
 
@@ -264,11 +269,24 @@ syscalls.o: bootstrap.h pcbs.h stacks.h queues.h klib.h ./uart.h startup.h
 syscalls.o: syscalls.h scheduler.h clock.h sio.h
 system.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
 system.o: pcbs.h stacks.h queues.h klib.h clock.h syscalls.h sio.h
-system.o: scheduler.h pci.h usb.h users.h
+system.o: scheduler.h pci.h usb.h i8255x.h i8255xcommandblock.h ethernet.h
+system.o: ipv6.h startup.h users.h
 pci.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
-pci.o: pcbs.h stacks.h queues.h klib.h pci.h usb.h
-usb.o: usb.h pci.h common.h c_io.h kmalloc.h support.h system.h x86arch.h
-usb.o: bootstrap.h pcbs.h stacks.h queues.h klib.h
+pci.o: pcbs.h stacks.h queues.h klib.h pci.h usb.h i8255x.h
+pci.o: i8255xcommandblock.h ethernet.h ipv6.h startup.h
+usb.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
+usb.o: pcbs.h stacks.h queues.h klib.h usb.h pci.h i8255x.h
+usb.o: i8255xcommandblock.h ethernet.h ipv6.h startup.h
+ipv6.o: ipv6.h common.h c_io.h kmalloc.h support.h system.h x86arch.h
+ipv6.o: bootstrap.h pcbs.h stacks.h queues.h klib.h
+ethernet.o: ethernet.h ipv6.h common.h c_io.h kmalloc.h support.h system.h
+ethernet.o: x86arch.h bootstrap.h pcbs.h stacks.h queues.h klib.h
+i8255xcommandblock.o: i8255xcommandblock.h ethernet.h ipv6.h common.h c_io.h
+i8255xcommandblock.o: kmalloc.h support.h system.h x86arch.h bootstrap.h
+i8255xcommandblock.o: pcbs.h stacks.h queues.h klib.h
+i8255x.o: i8255x.h common.h c_io.h kmalloc.h support.h system.h x86arch.h
+i8255x.o: bootstrap.h pcbs.h stacks.h queues.h klib.h i8255xcommandblock.h
+i8255x.o: ethernet.h ipv6.h startup.h
 ulibc.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h
 ulibc.o: pcbs.h stacks.h queues.h klib.h
 users.o: common.h c_io.h kmalloc.h support.h system.h x86arch.h bootstrap.h

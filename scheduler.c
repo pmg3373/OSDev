@@ -116,6 +116,8 @@ void _dispatch( void ) {
       _shell();
    }
 #endif
+   // do a usb poll
+   _poll_usb();
    
    // iterate through the levels until we find one
    // that has a process.  dispatch it.

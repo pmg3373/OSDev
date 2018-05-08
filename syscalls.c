@@ -26,6 +26,7 @@
 #include "stacks.h"
 #include "clock.h"
 #include "sio.h"
+#include "kwindow.h"
 
 /*
 ** PRIVATE DEFINITIONS

@@ -17,6 +17,7 @@
 
 #include "pcbs.h"
 #include "queues.h"
+#include "usb.h"
 
 /*
 ** General (C and/or assembly) definitions

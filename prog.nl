@@ -1,6 +1,6 @@
 
 
-2018-04-05 14:06                                                          Page 1
+2018-05-08 00:57                                                          Page 1
 
 
 00010000 T begtext	   0001033b T __isr_0x2c      00010533 T __isr_0x64
@@ -66,7 +66,7 @@
 
 
 
-2018-04-05 14:06                                                          Page 2
+2018-05-08 00:57                                                          Page 2
 
 
 0001077f T __isr_0x9c	   00010a1f T __isr_0xd4      00011361 T cvthex
@@ -132,47 +132,113 @@
 
 
 
-2018-04-05 14:06                                                          Page 3
+2018-05-08 00:57                                                          Page 3
 
 
-00013c98 T _sio_input_queu 00015ea5 T user_a	      000179ee T dumpme
-00013ca2 T _sio_readc	   0001601d T user_b	      000179f6 T bogus
-00013d03 T _sio_reads	   00016192 T user_c	      000179fe T do_exit
-00013d9f T _sio_writec	   00016307 T user_d	      00017a04 T get_ra
-00013e0f T _sio_writes	   000163a1 T user_e	      0001b060 D __isr_stub_tabl
-00013eb6 T _sio_puts	   0001642f T user_f	      0001b460 D hexdigits
-00013ef3 T _sio_dump	   000164bd T user_g	      0001b480 D scan_code
-00013fe3 T _stk_init	   0001654b T user_h	      0001b5a0 D _states
-00014006 T _stk_alloc	   000165cc T user_j	      0001b5c4 B __bss_start
-00014038 T _stk_free	   00016682 T user_k	      0001b5c4 D _edata
-00014057 T _stk_dump	   00016748 T user_l	      0001c778 B scroll_max_x
-00014295 T _stk_setup	   000168a9 T user_m	      0001c77c B max_x
-00014f59 T _sys_init	   000169b1 T user_n	      0001c780 B curr_x
-00015092 T _bite	   00016b23 T user_p	      0001c784 B min_y
-00015320 T _prune	   00016c35 T user_q	      0001c788 B scroll_max_y
-0001533b T _init	   00016c8f T user_r	      0001c78c B scroll_min_y
-00015522 T _pci_init	   00016d93 T user_s	      0001c790 B min_x
-000155ad T _get_ebp	   00016de6 T user_t	      0001c794 B curr_y
-000155b0 T cvt_dec0	   00016fa1 T user_u	      0001c798 B max_y
-0001563b T cvt_dec	   0001728c T user_w	      0001c79c B scroll_min_x
-00015682 T cvt_hex	   00017331 T user_x	      0001c7a0 B __isr_table
-00015711 T report	   000173f2 T user_y	      0001cba0 B _system_time
-00015775 T argdump	   00017469 T user_z	      0001cbc0 B _num_active
-00015a8e T strlen	   00017629 T idle	      0001cbc4 B _init_pcb
-00015ab0 T strcpy	   00017712 T init	      0001cbc8 B _next_pid
-00015ada T strcat	   00017986 T exit	      0001cbcc B _free_pcbs
-00015b10 T strcmp	   0001798e T read	      0001cbe0 B _active
-00015b46 T creadch	   00017996 T write	      0001cc44 B _zombie
-00015b61 T cread	   0001799e T fork	      0001cc48 B _sleeping
-00015b7c T sreadch	   000179a6 T exec	      0001cc4c B _waiting
-00015b97 T sread	   000179ae T kill	      0001cc50 B _ready
-00015bb2 T cwritech	   000179b6 T wait	      0001cc64 B _current
-00015bd3 T cwrites	   000179be T sleep	      0001cc68 B _reading
-00015bfd T cwrite	   000179c6 T time	      0001cc80 B _system_stack
-00015c18 T swritech	   000179ce T pid	      0001dc80 B _system_esp
-00015c39 T swrites	   000179d6 T ppid	      0001dc84 B _pci_devices
-00015c63 T swrite	   000179de T get_prio	      0001dc88 B _end
-00015c7e T spawn	   000179e6 T set_prio
+00013c98 T _sio_input_queu 00016438 T ru_resume	      00018f28 T read
+00013ca2 T _sio_readc	   00016470 T ru_recieve_ma_r 00018f30 T write
+00013d03 T _sio_reads	   0001648f T ru_abort	      00018f38 T fork
+00013d9f T _sio_writec	   000164ae T ru_load_hds     00018f40 T exec
+00013e0f T _sio_writes	   000164cd T ru_load_ru_base 00018f48 T kill
+00013eb6 T _sio_puts	   00016530 T transmit_single 00018f50 T wait
+00013ef3 T _sio_dump	   0001663e T i8255X_setup    00018f58 T sleep
+00013fe3 T _stk_init	   0001680f T _i8255X_test_se 00018f60 T time
+00014006 T _stk_alloc	   0001689e T i8255x_init     00018f68 T pid
+00014038 T _stk_free	   00016b47 T _get_ebp	      00018f70 T ppid
+00014057 T _stk_dump	   00016b4a T cvt_dec0	      00018f78 T get_prio
+00014295 T _stk_setup	   00016bd5 T cvt_dec	      00018f80 T set_prio
+00014f59 T _sys_init	   00016c1c T cvt_hex	      00018f88 T dumpme
+00015092 T _bite	   00016cab T report	      00018f90 T bogus
+00015320 T _prune	   00016d0f T argdump	      00018f98 T do_exit
+0001533b T _init	   00017028 T strlen	      00018f9e T get_ra
+00015556 T outl_wrap	   0001704a T strcpy	      0001d0c0 D __isr_stub_tabl
+00015587 T outw_wrap	   00017074 T strcat	      0001d4c0 D hexdigits
+000155c0 T outb_wrap	   000170aa T strcmp	      0001d4e0 D scan_code
+000155f8 T inl_wrap	   000170e0 T creadch	      0001d600 D _states
+00015624 T inw_wrap	   000170fb T cread	      0001d624 B __bss_start
+00015650 T inb_wrap	   00017116 T sreadch	      0001d624 D _edata
+0001567c T _pci_get_data   00017131 T sread	      0001e7d8 B scroll_max_x
+000156d3 T _pci_init	   0001714c T cwritech	      0001e7dc B max_x
+000157b1 T _xhci_setup	   0001716d T cwrites	      0001e7e0 B curr_x
+000158a1 T reverse_endian_ 00017197 T cwrite	      0001e7e4 B min_y
+000158f5 T build_ip_packet 000171b2 T swritech	      0001e7e8 B scroll_max_y
+00015942 T set_ip_header   000171d3 T swrites	      0001e7ec B scroll_min_y
+00015a52 T build_MAC	   000171fd T swrite	      0001e7f0 B min_x
+00015acf T build_ethernet_ 00017218 T spawn	      0001e7f4 B curr_y
+00015afa T build_ethernet_ 0001743f T user_a	      0001e7f8 B max_y
+00015c2e T set_dest_addr   000175b7 T user_b	      0001e7fc B scroll_min_x
+00015ca6 T create_rfd_bloc 0001772c T user_c	      0001e800 B __isr_table
+00015d0e T rfd_finished	   000178a1 T user_d	      0001ec00 B _system_time
+00015d20 T rfd_actual_coun 0001793b T user_e	      0001ec20 B _num_active
+00015d30 T read_rfd_area   000179c9 T user_f	      0001ec24 B _init_pcb
+00015d41 T create_transmit 00017a57 T user_g	      0001ec28 B _next_pid
+00015e7a T create_load_ind 00017ae5 T user_h	      0001ec2c B _free_pcbs
+00016003 T command_finishe 00017b66 T user_j	      0001ec40 B _active
+00016012 T command_error   00017c1c T user_k	      0001eca4 B _zombie
+00016021 T setup_rfa	   00017ce2 T user_l	      0001eca8 B _sleeping
+000160ee T poll_ru_status  00017e43 T user_m	      0001ecac B _waiting
+00016110 T poll_cu_status  00017f4b T user_n	      0001ecb0 B _ready
+00016134 T wait_until_cu_x 000180bd T user_p	      0001ecc4 B _current
+00016190 T wait_until_ru_x 000181cf T user_q	      0001ecc8 B _reading
+000161d3 T polled_read	   00018229 T user_r	      0001ece0 B _system_stack
+00016272 T cu_start	   0001832d T user_s	      0001fce0 B _system_esp
+000162d6 T cu_resume	   00018380 T user_t	      0001fd00 B _pci_devices
+0001630e T cu_load_dump	   0001853b T user_u	      0001fd40 B dcbaa
+0001632d T cu_dump_stat	   00018826 T user_w	      0001fd90 B sourceAddress
+0001634c T cu_load_cu_base 000188cb T user_x	      0001fd98 B destinationAddr
+00016384 T cu_dump_reset   0001898c T user_y	      0001fda0 B current_rfd_hea
+000163a3 T cu_static_resum 00018a03 T user_z	      0001fda4 B scb_base_addr
+000163c2 T cu_nop	   00018bc3 T idle	      0001fda8 B src_ip_addr
+000163e1 T ru_nop	   00018cac T init	      0001fdb8 B dst_mac_addr
+00016400 T ru_start	   00018f20 T exit	      0001fdc0 B pci_base_addr
+
+
+
+
+
+
+
+2018-05-08 00:57                                                          Page 4
+
+
+0001fdc4 B src_mac_addr	   0001fdcc B dst_ip_addr     0001fddc B _end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

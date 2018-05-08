@@ -1,0 +1,3 @@
+get   SCCS/s.Makefile
+make: get: Command not found
+make: *** [<builtin>: Makefile] Error 127

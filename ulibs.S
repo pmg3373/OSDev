@@ -49,6 +49,8 @@ SYSCALL(ppid)
 SYSCALL(get_prio)
 SYSCALL(set_prio)
 SYSCALL(dumpme)
+SYSCALL(get_w)
+SYSCALL(del_w)
 
 /*
 ** This is a bogus system call; it's here so that we can test
