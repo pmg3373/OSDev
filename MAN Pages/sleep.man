@@ -1,0 +1,16 @@
+Name
+    sleep - have current process sleep for an amount of time
+
+Synopsis
+    #include “common.h”
+    void sleep(uint32_t msec);
+
+Description
+    The function puts the current thread to sleep. The amount of time is passed into the 
+function in milliseconds. Giving it 0 is interpreted as a CPU yield
+
+Return Value
+    This function does not return
+Errors
+    None
+

@@ -1,0 +1,16 @@
+Name
+    wait - wait for child process to terminate
+
+Synopsis
+    #include “common.h”
+    int wait(uint32_t *status);
+
+Description
+    The function blocks the current process until its child process exits
+
+Return Value
+    Error code on error.
+    PID and exit status on success
+Errors
+    E_NO_KIDS - Process has no children
+

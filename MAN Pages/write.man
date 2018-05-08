@@ -1,0 +1,15 @@
+Name
+    write - write to a channel (serial or console)
+
+Synopsis
+    #include “common.h”
+    int write(int channel, char *buffer, uint32_t length);
+
+Description
+    The function attempts to write up to length bytes to the given channel from buffer.
+
+Return Value
+    This function returns the number of bytes written
+Errors
+    E_BAD_CHAN - invalid channel
+

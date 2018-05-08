@@ -445,7 +445,7 @@ check_memory:
 	pushw	%dx
 	pushw	%si
 	pushw	%di
-	
+
 	// Set the start of the buffer
 	movw	$MMAP_SEGMENT, %bx // 0x2D0
 	mov	%bx, %ds           // Data segment now starts at 0x2D00

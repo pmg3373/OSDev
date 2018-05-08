@@ -8,6 +8,7 @@
 
 #include "pci.h"
 
+#include "support.h"
 #include "i8255x.h"
 
 
@@ -63,12 +64,15 @@ int _pci_get_data(int bus, int dev, int function, int offset) {
 void _pci_init() {
     c_puts( " PCI" );
 
-    for (int bus = 0; bus < 1; bus++) {
-        for(int dev = 0; dev < 10; dev++) {
-            uint16_t data = (uint16_t)_pci_get_data(bus, dev, 0, 0);
+    for (int bus = 0; bus < 5; bus++) {
+        for(int dev = 0; dev < 32; dev++) {
+            int data = _pci_get_data(bus, dev, 0, 0);
 
-            //c_printf("Bus %d Device %d Value %x\n",bus,dev,data);
-            
+            if ((data & 0xFFFF) != 0xFFFF) {
+                int class = _pci_get_data(bus, dev, 0, 8);
+                c_printf("Bus %d Device %d Value %x: Class: %x\n",bus,dev,data, class);
+            }
+
             _xhci_setup(bus, dev, 0, data);
             if(data == 0x8086){
 				//c_printf("Attempting to setup i8255x \n");

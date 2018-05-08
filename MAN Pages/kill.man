@@ -1,0 +1,16 @@
+Name
+    kill - terminate process
+
+Synopsis
+    #include “common.h”
+    int32_t kill(uint16_t);
+
+Description
+    The function finds the process with the given PID and terminates it.
+
+Return Value
+    Status of termination attempt
+Errors
+    E_NO_ERROR - PID is found
+    E_BAD_PID - if not found
+

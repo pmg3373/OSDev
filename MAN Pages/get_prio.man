@@ -1,0 +1,15 @@
+Name
+    get_prio - get the priority of the specified process
+
+Synopsis
+    #include “common.h”
+     int get_prio(uint16_t whom);
+
+Description
+    The function gets the priority of the specified process if it is valid.
+
+Return Value
+    The priority of the specified process
+Errors
+    E_BAD_PID - given PID is not valid
+
