@@ -181,8 +181,17 @@ uint8_t _click_event() {
 }
 
 void _update_mouse(uint32_t x, uint32_t y) {
+  if(x < 0 || y < 0 || x >= screen_width || y >= screen_height) return;
   pointer.x = x;
   pointer.y = y;
+}
+
+uint32_t _get_mouse_x(void) {
+  return pointer.x;
+}
+
+uint32_t _get_mouse_y(void) {
+  return pointer.y;
 }
 
 void _paint_mouse(void) {

@@ -119,6 +119,7 @@ void _pull_forward(uint8_t window_id);
 
 /*
 ** Returns the id of the window that the mouse cursor is on
+** or 65 if we hit nothing
 */
 uint8_t _click_event(void);
 
@@ -128,6 +129,20 @@ uint8_t _click_event(void);
 ** Arguments: new x,y of mouse
 */
 void _update_mouse(uint32_t x, uint32_t y);
+
+/*
+** Gets mouse position
+**
+** Return: x of mouse
+*/
+uint32_t _get_mouse_x(void);
+
+/*
+** Gets mouse position
+**
+** Return: y of mouse
+*/
+uint32_t _get_mouse_y(void);
 
 /*
 ** Draws mouse cursor

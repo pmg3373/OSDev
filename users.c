@@ -931,6 +931,7 @@ int idle( int argc, char *argv[] ) {
 
 }
 
+#include "kwindow.h"
 /*
 ** Creates three windows, deletes the first
 */
@@ -942,8 +943,42 @@ int window_test(int argc, char *argv[]) {
   w2 = get_w("wraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaap", "test2", 32, 32, 500, 600);
   w3 = get_w(buff, "test3", 64, 64, 300, 400);
   buff[0] = '!';
-  del_w(w1);
+  //del_w(w1);
   for(;;) {
+    int c = creadch();
+    uint32_t x; uint32_t y;
+    if(c == 'w') {
+      x = _get_mouse_x();
+      y = _get_mouse_y();
+      y-=5;
+      _update_mouse(x, y);
+    }
+    if(c == 'a') {
+      x = _get_mouse_x();
+      x-=5;
+      y = _get_mouse_y();
+      _update_mouse(--x, y);
+    }
+    if(c == 's') {
+      x = _get_mouse_x();
+      y = _get_mouse_y();
+      y+=5;
+      _update_mouse(x, ++y);
+    }
+    if(c == 'd') {
+      x = _get_mouse_x();
+      x+=5;
+      y = _get_mouse_y();
+      _update_mouse(++x, y);
+    }
+    if(c == 'l') {
+      uint8_t wind = _click_event();
+      _pull_forward(wind);
+    }
+    if(c == 'k') {
+      uint8_t wind = _click_event();
+      del_w(wind);
+    }
   }
 }
 
@@ -986,15 +1021,8 @@ int init( int argc, char *argv[] ) {
    }
    swritech( '+' );
 
-   /*args[0] = "screen refresh"; args[1] = "@";
-   whom = spawn( _screen_refresh, args, PRIO_SYS_STD );
-   if( whom < 0 ) {
-     cwrites( "init, spawn() SCREEN_REFRESH failed\n" );
-   }
-   swritech( '+' );
-   */
    args[0] = "window test"; args[1] = "#";
-   whom = spawn( window_test, args, PRIO_USER_STD );
+   whom = spawn( window_test, args, PRIO_USER_HIGH );
    if( whom < 0 ) {
      cwrites( "init, spawn() WINDOW_TEST failed\n" );
    }
