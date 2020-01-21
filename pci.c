@@ -61,6 +61,57 @@ int _pci_get_data(int bus, int dev, int function, int offset) {
 }
 
 
+
+void _pci_device_structure_init_00h(int bus, int dev, void* device){
+    int address = (bus << 16) | (dev << 11) | (0x80000000);
+    struct pci_device_00h* dev_struct = ((pci_device_00h*)device);
+    
+    //Line 1 
+    
+    //Line 2
+    //Line 3
+    //Line 4
+    //Line 5
+    //Line 6
+    //Line 7
+    //Line 8
+    //Line 9
+    //Line 10
+    //Line 11
+    //Line 12
+    //Line 13
+    //Line 14
+    //Line 15
+    //Line 16
+    
+}
+
+
+/**
+ * Read an entire PCI header into memory
+ * @param bus Bus number, 8 bits
+ * @param dev Device number, 4 bits
+ * @param device Pointer to memory area with space reserved for largest PCI
+ *                      device header type (02h : 352 bytes)
+ */
+void _pci_device_structure_init(int bus, int dev, void* device){
+    int address = (bus << 16) | (dev << 11) | (0x80000000);
+    int header_type = (((inl_wrap(address + 0x0c)) & 
+        0b00000000111111110000000000000000) >> 16);
+    
+    switch(header_type){
+        case 0 :
+            break;
+        case 1:
+            //PCI to PCI bridge
+            break;
+        case 2:
+            //PCI to Cardbus bridge
+            break;
+    }
+}
+
+
 void _pci_init() {
     c_puts( " PCI" );
 

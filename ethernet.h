@@ -27,6 +27,9 @@ typedef struct preamble{
     uint8_t l7;
 } preamble;
 
+/**
+ * Structure of a Mac address split into 8 bit fields
+ */
 typedef struct mac_address{
     uint8_t l1;
     uint8_t l2;
@@ -36,6 +39,10 @@ typedef struct mac_address{
     uint8_t l6;
 } mac_address;
 
+/**
+ * Structure of and ethernet frame, frame check has space reserved but is
+ * calculated but hardware it will be ignored
+ */
 typedef struct ethernet_frame{
     struct mac_address destinationaddress;
     struct mac_address sourceaddress;

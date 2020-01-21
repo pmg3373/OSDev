@@ -159,7 +159,7 @@ int wait_until_ru_x(int desired_ru_status);
 void polled_read(void);
 
 void transmit_single_block(uint8_t* data_address[], uint32_t data_length, 
-        struct mac_address* destination_mac);
+        struct mac_address* destination_mac, struct ip_addr* dest_ip);
 
 void i8255X_setup(void);
 

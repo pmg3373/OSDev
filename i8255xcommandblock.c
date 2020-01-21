@@ -8,20 +8,16 @@
 #include "ipv6.h"
 #include "ethernet.h"
 
-mac_address sourceAddress;
-mac_address destinationAddress;
-
-void set_dest_addr( uint8_t l1, uint8_t l2, uint8_t l3, uint8_t l4,
-uint8_t l5,uint8_t l6){
-    destinationAddress.l1 = l1;
-    destinationAddress.l2 = l2;
-    destinationAddress.l3 = l3;
-    destinationAddress.l4 = l4;
-    destinationAddress.l5 = l5;
-    destinationAddress.l6 = l6;
-}
 
 
+/**
+ * Creates an rfd header
+ * header: pointer to malloced rfd header struct
+ * SF 1 if simplified mode
+ * EL 1 if this is the last one
+ * SIZE size of the data area after the rfd
+ * link_addr address of the next rfd header
+ */
 void create_rfd_block(rfd_header* header, uint32_t SF, uint32_t EL, uint32_t SIZE,
         uint32_t link_addr){
 
@@ -37,16 +33,29 @@ void create_rfd_block(rfd_header* header, uint32_t SF, uint32_t EL, uint32_t SIZ
     header->link_address = link_addr;
 }
 
+/**
+ * Checks an rfd header to see if it has completed reading
+ * header an rfd header
+ */
 int rfd_finished(rfd_header* header){
     return (header->status_line & I8255XRFD_FORMAT_C_MASK) 
             >> I8255XRFD_FORMAT_C_POS;
 }
 
+/**
+ * Return the actual count of received bytes
+ * header and rfd header
+ */
 int rfd_actual_count(rfd_header* header){
     return (header->data_field & I8255XRFD_FORMAT_ACTUAL_COUNT_MASK) 
             >> I8255XRFD_FORMAT_ACTUAL_COUNT_POS;
 }
 
+/**
+ * Read from the RFA to a char array
+ * header pointer to an rfd header
+ * data malloced char array
+ */
 void read_rfd_area(rfd_header* header, char* data[]){
     *data = *header->data_area;
 }
@@ -60,16 +69,12 @@ void read_rfd_area(rfd_header* header, char* data[]){
  * @param CID Length of time CNA interrupts are delayed by this device
  * @param NC THIS SHOULD ALWAYS BE 0, it will compute crc and insert source addr for you if this is 0
  * @param SF This should be 0, 0 indicates working in simplified mode
- * @param C This bit is set by the controller, 0 = command not done, 1 = done
- * @param OK This bit is set by the controller, 0 = no error, 1 = error
- * @param U This bit is set to 1 by the device
  * @param linkAddress Address of next command
  * @param bufferDescAddr This should be 0FFFFFFFFh, we are in simp mode
  * @param TBDNumber This should be 0 in simp mode
  * @param transThresh Unsure?
  * @param EOF This should be 0, simp mode requires
  * @param blockByteCount Total number of bytes to be transmitted
- * @param data
  */
 void create_transmit_command(commandblock_transmit* block, uint8_t EL, uint8_t S,
         uint8_t I, uint8_t CID, uint8_t NC, uint8_t SF, uint32_t linkAddress, 
@@ -142,10 +147,16 @@ uint8_t S, uint8_t I, uint32_t linkAddress, mac_address source_addr){
      block->addr_data_field2 = block->addr_data_field2 & (source_addr.l6 << 8);
 }
 
+/**
+ * Returns the status of a given command block
+ */
 int command_finished(commandblock_general* block){
     return block->command_status_line & I8255XCOMMANDBLOCK_FORMAT_C_MASK;
 }
 
+/**
+ * Returns the error code for a given command block
+ */
 int command_error(commandblock_general* block){
     return block->command_status_line & I8255XCOMMANDBLOCK_FORMAT_OK_MASK;
 }

@@ -26,7 +26,9 @@ enum traffic_classes{
 };
 
 
-
+/**
+ * Structure of an IP address as 4 longs
+ */
 typedef struct ip_addr{
     uint32_t addr1;
     uint32_t addr2;
@@ -34,6 +36,9 @@ typedef struct ip_addr{
     uint32_t addr4;
 } ip_addr;
 
+/**
+ * Structure of an IPv^ header
+ */
 typedef struct ipv6_header {
     uint32_t l1;
 
@@ -50,6 +55,9 @@ typedef struct ipv6_header {
     uint32_t destAddr4;
 } ipv6_header;
 
+/**
+ * Structure of an ip packet with a header
+ */
 typedef struct ipv6_packet {
     struct ipv6_header header;
     uint8_t* data[];

@@ -1,6 +1,8 @@
 #include "ipv6.h"
 
-
+/*
+ * Reverse the byte order of a unsigned 32 bit integer
+ */
 uint32_t reverse_endian_uint32(uint32_t to_reverse){
     uint32_t reversed = 0;
     uint32_t byte_mask = 0b00000000000000000000000011111111;
@@ -11,7 +13,25 @@ uint32_t reverse_endian_uint32(uint32_t to_reverse){
 }
 
 
-
+/**
+ * Build an IP packet
+ * version: IP version, should be 6
+ * trafficClass:
+ * flowLabel:
+ * payloadLength: Length of payload in bytes
+ * nextHeader: location of next ip header
+ * hopLimit: Number of Hops the packet can make
+ * sourceAddr1: the first word of the source ip address
+ * sourceAddr2: the second word of the source ip address
+ * sourceAddr3: the third word of the source ip address
+ * sourceAddr4: the four word of the source ip address
+ * destAddr1: the first word of the destination ip address
+ * destAddr2: the second word of the destination ip address
+ * destAddr3: the third word of the destination ip address
+ * destAddr4: the four word of the destination ip address
+ * payloadAddress: Address of the message to put in the ip packet
+ * packet: pointer to a malloced structure to place the data in
+ */
 void build_ip_packet(uint32_t version, uint32_t trafficClass, uint32_t flowLabel, 
 	uint32_t payloadLength, uint32_t nextHeader, uint32_t hopLimit, 
 	uint32_t sourceAddr1, uint32_t sourceAddr2, 
@@ -30,6 +50,24 @@ void build_ip_packet(uint32_t version, uint32_t trafficClass, uint32_t flowLabel
 }
 
 
+/** 
+ * Build the header portion of the ip packet
+ * header: pointer to the header section of the packet
+ * version: IP version, should be 6
+ * trafficClass:
+ * flowLabel:
+ * payloadLength: Length of payload in bytes
+ * nextHeader: location of next ip header
+ * hopLimit: Number of Hops the packet can make
+ * sourceAddr1: the first word of the source ip address
+ * sourceAddr2: the second word of the source ip address
+ * sourceAddr3: the third word of the source ip address
+ * sourceAddr4: the four word of the source ip address
+ * destAddr1: the first word of the destination ip address
+ * destAddr2: the second word of the destination ip address
+ * destAddr3: the third word of the destination ip address
+ * destAddr4: the four word of the destination ip address
+ */
 void set_ip_header(struct ipv6_header* header, 
 	uint32_t version, uint32_t trafficClass, uint32_t flowLabel, 
 	uint32_t payloadLength, uint32_t nextHeader, uint32_t hopLimit, 
@@ -60,7 +98,7 @@ void set_ip_header(struct ipv6_header* header,
 	int payloadLengthBits = payloadLength & IPV6_PAYLOADLEN_BITMASK;
 	header->l2 = header->l2 | (payloadLengthBits << IPV6_PAYLOADLEN_POSMASK);
 	
-	//TODO: Fix endianess
+	
 	header->sourceAddr1 = sourceAddr1;
 	header->sourceAddr2 = sourceAddr2;
 	header->sourceAddr3 = sourceAddr3;

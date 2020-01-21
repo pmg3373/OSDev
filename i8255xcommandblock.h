@@ -70,12 +70,18 @@
 
 #define I8255XCOMMANDBLOCK_TRANSMIT_FORMAT_LINE_OFFSET  (0hc)
 
+/**
+ * Structure that is common to all command blocks
+ */
 typedef struct commandblock_general {
 	uint32_t command_status_line;
 	uint32_t link_address;
 	uint32_t addr_data_field1;
 } commandblock_general;
 
+/**
+ * Structure of a RFD header
+ */
 typedef struct rfd_header {
     uint32_t status_line;
     uint32_t link_address;
@@ -86,6 +92,10 @@ typedef struct rfd_header {
 
 //after each command block there is 4 dwords of space reserve for the extended TCB
 //even if it is not in use, this is included in the struct for malloc calculation
+/**
+ * Structure of a transmit command block
+ * 
+ */
 typedef struct commandblock_transmit {
     struct commandblock_general cb_gen;
     uint32_t transmit_line;
@@ -96,15 +106,14 @@ typedef struct commandblock_transmit {
     struct ethernet_frame e_frame;
 } commandblock_transmit;
 
+/**
+ * Structure of a Load Individual Address Command Block
+ */
 typedef struct commandblock_load_ind_addr {
     struct commandblock_general cb_gen;
     uint32_t addr_data_field2;
 } commandblock_load_ind_addr;
 
-
-
-void set_dest_addr( uint8_t l1, uint8_t l2, uint8_t l3, uint8_t l4,
-uint8_t l5,uint8_t l6);
 
 void create_rfd_block(rfd_header* header, uint32_t SF, uint32_t EL, uint32_t SIZE,
         uint32_t link_addr);
